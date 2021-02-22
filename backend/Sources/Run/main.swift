@@ -8,8 +8,10 @@ try LoggingSystem.bootstrap(from: &env)
 let app = Application(env)
 try configure(app)
 
+let mongoDBURI = ProcessInfo.processInfo.environment["MONGODB_URI"] ?? "mongodb://localhost:27017"
+
 // Configure the app for using a MongoDB server at the provided connection string.
-try app.mongoDB.configure("mongodb://localhost:27017")
+try app.mongoDB.configure(mongoDBURI)
 
 // Use `ExtendedJSONEncoder` and `ExtendedJSONDecoder` for encoding/decoding `Content`.
 ContentConfiguration.global.use(encoder: ExtendedJSONEncoder(), for: .json)
@@ -25,3 +27,4 @@ defer {
 }
 
 try app.run()
+
