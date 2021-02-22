@@ -2,8 +2,7 @@ import React from "react";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import Recipes from "./pages/recipes";
 import Home from "./pages/home";
@@ -13,7 +12,7 @@ function App() {
     return (
         <Router>
             <div class="flex flex-col min-h-screen">
-                <header class="fixed bg-green-forest border-b-4 border-green-fern w-full z-50 text-white">
+                <header class="fixed bg-mongodb-forest border-b-4 border-mongodb-fern w-full z-50 text-white">
                     <nav class="container mx-auto flex items-center justify-between flex-wrap p-4">
                         <div class="flex items-center flex-shrink-0 text-white mr-6">
                             <span class="font-bold text-xl uppercase"><a class="hover:no-underline" href="/" title="BuildFest 2021">BuildFest 2021</a></span>
@@ -45,7 +44,7 @@ function App() {
                 </Switch>
                 <footer class="bg-gray-700 text-white text-xs">
                     <div class="container mx-auto p-4">
-                        Created by <a href="https:/www.nraboy.com">Nic Raboy</a>, <a href="#">Mike Lynn</a>, and <a href="#">Kaitlin Mahar</a>
+                        Created by <a target="_blank" rel="noreferrer" href="https:/www.nraboy.com">Nic Raboy</a>, <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mlynn/">Mike Lynn</a>, and <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kaitlinmahar/">Kaitlin Mahar</a>
                     </div>
                 </footer>
             </div>
