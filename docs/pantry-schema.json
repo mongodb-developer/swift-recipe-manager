@@ -1,0 +1,17 @@
+{
+    "_id": "nraboy",
+    "password": "bcrypted",
+    "inventory": [
+        {
+            "ingredient": "Semi-Sweet Chocolate Chips",
+            "quantity": 6,
+            "unit": "cup",
+            "upc": "4935674375",
+            "url": "https://....",
+            "photo": "https://..."
+        }
+    ],
+    "favorites": [
+        "43958347957"
+    ]
+}

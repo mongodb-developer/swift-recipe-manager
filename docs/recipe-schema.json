@@ -1,0 +1,25 @@
+{
+    "_id": "43958347957",
+    "title": "Chocolate Chip Cookies",
+    "photo": "https://...",
+    "servings": 6,
+    "calories": 300,
+    "ingredients": [
+        {
+            "ingredient": "Semi-Sweet Chocolate Chips",
+            "quantity": 1,
+            "unit": "cup",
+            "notes": ""
+        }
+    ],
+    "instructions": [
+        {
+            "description": "Mix ingredients",
+            "photo": "https://..."
+        }
+    ],
+    "rating": {
+        "average": 4.5,
+        "total_reviews": 5000
+    }
+}
