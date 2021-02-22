@@ -3,9 +3,11 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         colors: {
-            "green": {
+            "mongodb": {
                 "fern": "#12924F",
-                "forest": "#116149"
+                "forest": "#116149",
+                "mint": "#B8E6CB",
+                "leaf": "#13AA52"
             },
             "gray": {
                 "100": "#F3F4F6",
@@ -18,7 +20,22 @@ module.exports = {
                 "800": "#1F2937",
                 "900": "#111827"
             },
-            "white": "#FFFFFF"
+            "red": {
+                "100": "#FEE2E2",
+                "200": "#FECACA",
+                "500": "#EF4444",
+                "700": "#B91C1C",
+                "800": "#991B1B"
+            },
+            "blue": {
+                "100": "#DBEAFE",
+                "400": "#60A5FA",
+                "500": "#3B82F6",
+                "700": "#1D4ED8",
+                "800": "#1E40AF"
+            },
+            "white": "#FFFFFF",
+            "black": "#000000"
         },
         extend: {},
     },
