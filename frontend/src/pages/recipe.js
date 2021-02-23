@@ -25,7 +25,8 @@ function Recipe() {
             "method": "PUT",
             "url": "http://localhost:8080/api/grocery-list",
             "data": {
-                "recipe_id": id
+                "recipeId": id,
+                "userName": "nicolas.raboy@mongodb.com"
             }
         })
         .then(response => response.data)
