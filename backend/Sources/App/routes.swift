@@ -46,4 +46,32 @@ func routes(_ app: Application) throws {
         return req.recipeCollection.findOne([ "_id": .objectID(bsonId) ]).unwrap(or: Abort(.notFound, reason: "No recipe with matching id"))
     }
 
+    app.put("api", "grocery-list") { req -> EventLoopFuture<Response> in
+        let body = try req.content.decode(GroceryListAddition.self)
+        return req.recipeCollection.aggregate(
+            [
+                ["$match": [ "_id": .objectID(body.recipeId) ]],
+                ["$project": ["_id": 1, "ingredients": 1]]
+            ]
+        ).flatMap { cursor in
+            cursor.toArray()
+        }.map { array in
+            array.first
+        }.unwrap(or: Abort(.notFound, reason: "No recipe with matching id"))
+        .flatMap { recipeDoc in
+            req.userCollection.updateOne(
+                filter: ["name": .string(body.userName)],
+                update: [
+                    "$addToSet": ["recipes": .document(recipeDoc)]
+                ],
+                options: UpdateOptions(upsert: true)
+            )
+        }.map { _ in
+            Response(status: .ok)
+        }
+    }
+}
+struct GroceryListAddition: Codable {
+    let recipeId: BSONObjectID
+    let userName: String
 }

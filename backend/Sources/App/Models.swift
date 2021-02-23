@@ -6,6 +6,10 @@ extension Request {
     var recipeCollection: MongoCollection<Recipe> {
         self.mongoDB.client.db("recipes").collection("recipes", withType: Recipe.self)
     }
+
+    var userCollection: MongoCollection<BSONDocument> {
+        self.mongoDB.client.db("recipes").collection("users")
+    }
 }
 
 struct Recipe: Content {
