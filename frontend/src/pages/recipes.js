@@ -14,7 +14,7 @@ function Recipes() {
         .then(result => {
             setRecipes(result);
         });
-    }, [false]);
+    }, []);
 
     return (
         <main className="container mx-auto pt-24 px-4">
