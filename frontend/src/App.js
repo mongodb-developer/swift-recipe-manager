@@ -11,14 +11,14 @@ function App() {
     const [isNavbarOpen, setIsNavbarOpen] = React.useState(false);
     return (
         <Router>
-            <div class="flex flex-col min-h-screen">
-                <header class="fixed bg-mongodb-forest border-b-4 border-mongodb-fern w-full z-50 text-white">
-                    <nav class="container mx-auto flex items-center justify-between flex-wrap p-4">
-                        <div class="flex items-center flex-shrink-0 text-white mr-6">
-                            <span class="font-bold text-xl uppercase"><a class="hover:no-underline" href="/" title="BuildFest 2021">BuildFest 2021</a></span>
+            <div className="flex flex-col min-h-screen">
+                <header className="fixed bg-mongodb-forest border-b-4 border-mongodb-fern w-full z-50 text-white">
+                    <nav className="container mx-auto flex items-center justify-between flex-wrap p-4">
+                        <div className="flex items-center flex-shrink-0 text-white mr-6">
+                            <span className="font-bold text-xl uppercase"><a className="hover:no-underline" href="/" title="BuildFest 2021">BuildFest 2021</a></span>
                         </div>
-                        <div class="block sm:hidden">
-                            <button onClick={() => setIsNavbarOpen(!isNavbarOpen)} aria-label="Navigation Menu" class="flex items-center py-2 rounded text-white">
+                        <div className="block sm:hidden">
+                            <button onClick={() => setIsNavbarOpen(!isNavbarOpen)} aria-label="Navigation Menu" className="flex items-center py-2 rounded text-white">
                                 <svg viewBox="0 0 100 80" width="24" height="24" fill="#FFFFFF">
                                     <rect width="100" height="15"></rect>
                                     <rect y="30" width="100" height="15"></rect>
@@ -27,9 +27,9 @@ function App() {
                             </button>
                         </div>
                         <div id="nav-items" className={(isNavbarOpen ? "flex " : "hidden ") + "w-full block flex-grow sm:flex sm:items-center sm:w-auto text-left sm:text-right font-bold border-t border-white mt-5 sm:mt-0 sm:border-0 sm:block"}>
-                            <div class="text-sm sm:flex-grow">
-                                <a href="/" class="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Home</a>
-                                <a href="/recipes" class="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Recipes</a>
+                            <div className="text-sm sm:flex-grow">
+                                <a href="/" className="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Home</a>
+                                <a href="/recipes" className="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Recipes</a>
                             </div>
                         </div>
                     </nav>
@@ -42,8 +42,8 @@ function App() {
                         <Home />
                     </Route>
                 </Switch>
-                <footer class="bg-gray-700 text-white text-xs">
-                    <div class="container mx-auto p-4">
+                <footer className="bg-gray-700 text-white text-xs">
+                    <div className="container mx-auto p-4">
                         Created by <a target="_blank" rel="noreferrer" href="https:/www.nraboy.com">Nic Raboy</a>, <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mlynn/">Mike Lynn</a>, and <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kaitlinmahar/">Kaitlin Mahar</a>
                     </div>
                 </footer>
