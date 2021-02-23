@@ -6,6 +6,14 @@ main {
     flex: 1;
 }
 
+main p {
+    @apply mb-2
+}
+
+main a {
+    @apply hover:underline text-mongodb-forest;
+}
+
 footer a {
     @apply hover:underline;
 }
