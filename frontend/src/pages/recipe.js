@@ -20,6 +20,22 @@ function Recipe() {
         });
     }, [id]);
 
+    function addToGroceryList() {
+        axios({
+            "method": "PUT",
+            "url": "http://localhost:8080/api/grocery-list",
+            "data": {
+                "recipe_id": id
+            }
+        })
+        .then(response => response.data)
+        .then(result => {
+            console.log("Added!");
+        }, error => {
+            console.error(error);
+        });
+    }
+
     return (
         <main className="container mx-auto pt-24 px-4">
             <div className="mb-4">
@@ -51,6 +67,11 @@ function Recipe() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className="mb-8">
+                <span className="bg-mongodb-mint border border-mongodb-forest p-3 hover:no-underline hover:bg-mongodb-leaf hover:text-white cursor-pointer" onClick={addToGroceryList}>
+                    Add to Grocery List
+                </span>
             </div>
         </main>
     );
