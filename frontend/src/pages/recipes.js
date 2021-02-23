@@ -23,8 +23,8 @@ function Recipes() {
                 Check out the list of available recipes!
             </p>
             {recipes.map((recipe, index) => (
-                <h2 key="{index}" className="text-lg font-medium mb-2">
-                    <a href="#">{recipe.title}</a>
+                <h2 key={index} className="text-lg font-medium mb-2">
+                    <a href={"/recipe/" + recipe._id.$oid}>{recipe.title}</a>
                 </h2>
             ))}
         </main>
