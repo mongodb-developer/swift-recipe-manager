@@ -18,7 +18,23 @@ function Recipe() {
         .then(result => {
             setRecipe(result);
         });
-    }, [false]);
+    }, [id]);
+
+    function addToGroceryList() {
+        axios({
+            "method": "PUT",
+            "url": "http://localhost:8080/api/grocery-list",
+            "data": {
+                "recipe_id": id
+            }
+        })
+        .then(response => response.data)
+        .then(result => {
+            console.log("Added!");
+        }, error => {
+            console.error(error);
+        });
+    }
 
     return (
         <main className="container mx-auto pt-24 px-4">
@@ -36,7 +52,7 @@ function Recipe() {
                 <p><strong className="font-bold">Ingredients</strong></p>
                 <ul className="list-disc list-inside my-2">
                     {recipe.ingredients?.map((ingredient, index) => (
-                        <li key={index}>{ingredient.ingredient}</li>
+                        <li key={"ingredient-" + index}>{ingredient.ingredient}</li>
                     ))}
                 </ul>
             </div>
@@ -45,12 +61,17 @@ function Recipe() {
                 <p>Pay attention to the instructions to get the best results!</p>
                 <div className="list-disc list-inside my-2">
                     {recipe.instructions?.map((instruction, index) => (
-                        <div>
+                        <div key={"instruction-" + index}>
                             <p><strong className="font-bold">Step {index + 1}</strong></p>
-                            <p key={index}>{instruction.description}</p>
+                            <p>{instruction.description}</p>
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className="mb-8">
+                <span className="bg-mongodb-mint border border-mongodb-forest p-3 hover:no-underline hover:bg-mongodb-leaf hover:text-white cursor-pointer" onClick={addToGroceryList}>
+                    Add to Grocery List
+                </span>
             </div>
         </main>
     );
