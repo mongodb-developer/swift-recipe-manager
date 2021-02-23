@@ -38,17 +38,12 @@ func routes(_ app: Application) throws {
         }
     }
 
-    app.get("api", "recipe", ":id") { req -> EventLoopFuture<[BSONDocument]> in
+    app.get("api", "recipe", ":id") { req -> EventLoopFuture<Recipe> in
         guard let id = req.parameters.get("id") else {
             throw Abort(.internalServerError, reason: "Request unexpectedly missing name parameter")
         }
         let bsonId = try BSONObjectID(id)
-        let pipeline: [BSONDocument] = [
-            ["$match": [ "_id": .objectID(bsonId) ]]
-        ]
-        return req.recipeCollection.aggregate(pipeline).flatMap { cursor in
-            cursor.toArray()
-        }
+        return req.recipeCollection.findOne([ "_id": .objectID(bsonId) ]).unwrap(or: Abort(.notFound, reason: "No recipe with matching id"))
     }
 
 }

@@ -5,6 +5,7 @@ import {
     Route
 } from "react-router-dom";
 import Recipes from "./pages/recipes";
+import Recipe from "./pages/recipe";
 import Home from "./pages/home";
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
                 <Switch>
                     <Route path="/recipes">
                         <Recipes />
+                    </Route>
+                    <Route path="/recipe/:id">
+                        <Recipe />
                     </Route>
                     <Route path="/">
                         <Home />
