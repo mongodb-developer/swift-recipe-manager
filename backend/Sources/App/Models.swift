@@ -15,6 +15,7 @@ extension Request {
 struct Recipe: Content {
     let _id: BSONObjectID
     let title: String
+    let description: String
     //let photo: URL?
     let servings: Int
     let calories: Int
@@ -34,6 +35,9 @@ enum Unit: String, Content {
     case cup
     case ounces
     case grams
+    case teaspoons
+    case tablespoons
+    case unit
 }
 
 struct Instruction: Content {

@@ -3,11 +3,18 @@ import {
     useParams
 } from "react-router-dom";
 import axios from "axios";
+import { create, all } from "mathjs";
 
 function Recipe() {
 
     const [recipe, setRecipe] = useState({});
     const { id } = useParams();
+
+    const config = {
+        number: "Fraction"
+    };
+
+    const math = create(all, config);
 
     useEffect(() => {
         axios({
@@ -42,7 +49,7 @@ function Recipe() {
             <div className="mb-4">
                 <h1 className="text-2xl font-bold mb-2 text-black">{recipe.title}</h1>
                 <p>
-                    TBD
+                    {recipe.description}
                 </p>
             </div>
             <div className="bg-blue-100 border border-blue-500 p-2 mb-8">
@@ -53,7 +60,12 @@ function Recipe() {
                 <p><strong className="font-bold">Ingredients</strong></p>
                 <ul className="list-disc list-inside my-2">
                     {recipe.ingredients?.map((ingredient, index) => (
-                        <li key={"ingredient-" + index}>{ingredient.ingredient}</li>
+                        <li key={"ingredient-" + index}>
+                            {ingredient.quantity} {ingredient.unit} - {ingredient.ingredient}
+                            {ingredient.notes !== "" &&
+                                <span> [{ingredient.notes}]</span>
+                            }
+                        </li>
                     ))}
                 </ul>
             </div>
