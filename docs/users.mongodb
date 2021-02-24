@@ -1,0 +1,28 @@
+use("recipes");
+
+//db.users.drop();
+
+db.users.aggregate([
+    {
+        "$match": {
+            "name": "buildfest@mongodb.com"
+        }
+    },
+    {
+        "$unwind": "$recipes"
+    },
+    {
+        "$unwind": "$recipes.ingredients"
+    },
+    {
+        "$group": {
+            "_id": {
+                "ingredient": "$recipes.ingredients.ingredient",
+                "unit": "$recipes.ingredients.unit"
+            },
+            "total": {
+                "$sum": "$recipes.ingredients.quantity"
+            }
+        }
+    }
+]);

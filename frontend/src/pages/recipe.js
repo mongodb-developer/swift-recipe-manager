@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-    useParams
+    useParams,
+    useHistory
 } from "react-router-dom";
 import axios from "axios";
 
@@ -8,6 +9,7 @@ function Recipe() {
 
     const [recipe, setRecipe] = useState({});
     const { id } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         axios({
@@ -26,12 +28,12 @@ function Recipe() {
             "url": "http://localhost:8080/api/grocery-list",
             "data": {
                 "recipeId": id,
-                "userName": "nicolas.raboy@mongodb.com"
+                "userName": "buildfest@mongodb.com"
             }
         })
         .then(response => response.data)
         .then(result => {
-            console.log("Added!");
+            history.push("/shopping-list/buildfest@mongodb.com");
         }, error => {
             console.error(error);
         });

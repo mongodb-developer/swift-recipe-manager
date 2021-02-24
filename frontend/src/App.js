@@ -8,6 +8,7 @@ import Recipes from "./pages/recipes";
 import Recipe from "./pages/recipe";
 import Home from "./pages/home";
 import Search from "./pages/search";
+import ShoppingList from "./pages/shopping-list";
 
 function App() {
 
@@ -40,9 +41,9 @@ function App() {
                     </div>
                     <div id="nav-items" className={(isNavbarOpen ? "sm:flex " : "hidden ") + "w-full block flex-grow sm:flex sm:items-center sm:w-auto text-left sm:text-right font-bold border-t border-white mt-5 sm:mt-0 sm:border-0 sm:block"}>
                         <div className="text-sm sm:flex-grow">
-                            <input onKeyPress={performSearch} className="sm:ml-6 mt-4 sm:mt-0 p-2 w-full sm:w-1/2 md:w-1/3 text-black" type="text" placeholder="Search..." />
-                            <a href="/" className="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Home</a>
+                            <input onKeyPress={performSearch} className="sm:ml-6 mt-4 sm:mt-0 p-2 w-full sm:w-1/3 text-black" type="text" placeholder="Search..." />
                             <a href="/recipes" className="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Recipes</a>
+                            <a href="/shopping-list/buildfest@mongodb.com" className="block mt-4 sm:inline-block sm:mt-0 text-white uppercase sm:ml-6 hover:underline">Shopping List</a>
                         </div>
                     </div>
                 </nav>
@@ -56,6 +57,9 @@ function App() {
                 </Route>
                 <Route path="/search/:query">
                     <Search />
+                </Route>
+                <Route path="/shopping-list/:user">
+                    <ShoppingList />
                 </Route>
                 <Route path="/">
                     <Home />
