@@ -1,0 +1,45 @@
+import { useEffect, useState } from "react";
+import {
+    useParams
+} from "react-router-dom";
+import axios from "axios";
+
+function ShoppingList() {
+
+    const [shoppingList, setShoppingList] = useState([]);
+    const { user } = useParams();
+
+    useEffect(() => {
+        axios({
+            "method": "GET",
+            "url": `http://localhost:8080/api/grocery-list/${user}`
+        })
+        .then(response => response.data)
+        .then(result => {
+            setShoppingList(result);
+        });
+    }, [user]);
+
+    return (
+        <main className="container mx-auto pt-24 px-4">
+            <div className="mb-4">
+                <h1 className="text-2xl font-bold mb-2 text-black">Shopping List for "{user}"</h1>
+                <p>
+                    Based on the recipes in your list, you'll need the following ingredients and ingredient quantities.
+                </p>
+            </div>
+            <div className="mb-8">
+                <p><strong className="font-bold">Ingredients</strong></p>
+                <ul className="list-disc list-inside my-2">
+                    {shoppingList.map((item, index) => (
+                        <li key={"item-" + index}>
+                            {item.total} {item._id.unit} - {item._id.ingredient}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </main>
+    );
+}
+
+export default ShoppingList;
