@@ -66,8 +66,13 @@ function App() {
                 </Route>
             </Switch>
             <footer className="bg-gray-700 text-white text-xs">
-                <div className="container mx-auto p-4">
-                    Created by <a target="_blank" rel="noreferrer" href="https:/www.nraboy.com">Nic Raboy</a>, <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mlynn/">Mike Lynn</a>, and <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kaitlinmahar/">Kaitlin Mahar</a>
+                <div className="container mx-auto p-4 flex flex-column flex-wrap">
+                    <p className="flex-shrink-0">
+                        Created by <a target="_blank" rel="noreferrer" href="https:/www.nraboy.com">Nic Raboy</a>, <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mlynn/">Mike Lynn</a>, and <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kaitlinmahar/">Kaitlin Mahar</a>
+                    </p>
+                    <p className="flex-grow text-left mt-3 sm:mt-0 md:text-right">
+                        BuildFest 2021
+                    </p>
                 </div>
             </footer>
         </div>
