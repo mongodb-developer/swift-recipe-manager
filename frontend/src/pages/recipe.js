@@ -3,18 +3,11 @@ import {
     useParams
 } from "react-router-dom";
 import axios from "axios";
-import { create, all } from "mathjs";
 
 function Recipe() {
 
     const [recipe, setRecipe] = useState({});
     const { id } = useParams();
-
-    const config = {
-        number: "Fraction"
-    };
-
-    const math = create(all, config);
 
     useEffect(() => {
         axios({

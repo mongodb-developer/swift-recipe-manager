@@ -27,7 +27,7 @@ func routes(_ app: Application) throws {
                         "query": query,
                         "path": ["title", "ingredients.ingredient"],
                         "fuzzy": [
-                            "maxEdits": 2
+                            "maxEdits": 1
                         ]
                     ]
                 ]
