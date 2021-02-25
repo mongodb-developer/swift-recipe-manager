@@ -28,7 +28,7 @@ function App() {
             <header className="fixed bg-mongodb-forest border-b-4 border-mongodb-fern w-full z-50 text-white">
                 <nav className="container mx-auto flex items-center justify-between flex-wrap p-4">
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
-                        <span className="font-bold text-xl uppercase"><a className="hover:no-underline" href="/" title="BuildFest 2021">BuildFest 2021</a></span>
+                        <span className="font-bold text-xl uppercase"><a className="hover:no-underline" href="/" title="Mongo Cooks">Mongo Cooks</a></span>
                     </div>
                     <div className="block sm:hidden">
                         <button onClick={() => setIsNavbarOpen(!isNavbarOpen)} aria-label="Navigation Menu" className="flex items-center py-2 rounded text-white">
@@ -70,8 +70,8 @@ function App() {
                     <p className="flex-shrink-0">
                         Created by <a target="_blank" rel="noreferrer" href="https:/www.nraboy.com">Nic Raboy</a>, <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mlynn/">Mike Lynn</a>, and <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kaitlinmahar/">Kaitlin Mahar</a>
                     </p>
-                    <p className="flex-grow text-left mt-3 sm:mt-0 md:text-right">
-                        BuildFest 2021
+                    <p className="flex-grow text-left mt-3 sm:mt-0 sm:text-right w-full sm:w-auto block">
+                        <a target="_blank" rel="noreferrer" href="https://github.com/kmahar/RecipeApp">MongoDB BuildFest 2021</a>
                     </p>
                 </div>
             </footer>
