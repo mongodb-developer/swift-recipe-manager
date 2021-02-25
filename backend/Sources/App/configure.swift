@@ -8,7 +8,7 @@ public func configure(_ app: Application) throws {
 
     let corsConfiguration = CORSMiddleware.Configuration(
         allowedOrigin: .all,
-        allowedMethods: [.GET, .POST, .PUT],
+        allowedMethods: [.GET, .POST, .PUT, .DELETE],
         allowedHeaders: [.accept, .authorization, .contentType, .origin, .xRequestedWith, .accessControlAllowOrigin]
     )
     let corsMiddleware = CORSMiddleware(configuration: corsConfiguration)

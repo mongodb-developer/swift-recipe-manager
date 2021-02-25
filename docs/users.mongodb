@@ -49,3 +49,17 @@ db.users.aggregate([
         }
     }
 ]);
+
+db.users.find({ "name": "buildfest@mongodb.com" });
+
+db.users.updateOne(
+    { 
+        "name": "buildfest@mongodb.com", 
+        "recipes._id": ObjectId("603685347865c41bcc7ab685")
+    },
+    {
+        "$unset": {
+            "recipes.$": ""
+        }
+    }
+);

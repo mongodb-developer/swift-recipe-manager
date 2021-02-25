@@ -25,9 +25,24 @@ function ShoppingList() {
         })
         .then(response => response.data)
         .then(result => {
-            setRecipeList(result[0]);
+            if(result.length > 0) {
+                setRecipeList(result[0]);
+            }
         });
     }, [user]);
+
+    function removeRecipeFromList(recipeId) {
+        axios({
+            "method": "DELETE",
+            "url": `http://localhost:8080/api/recipe-list/${user}/${recipeId}`
+        })
+        .then(response => response.data)
+        .then(result => {
+            console.log(result);
+        }, error => {
+            console.error(error);
+        });
+    }
 
     return (
         <main className="container mx-auto pt-24 px-4">
@@ -42,7 +57,7 @@ function ShoppingList() {
                 <ul className="list-disc list-inside my-2">
                     {shoppingList.map((item, index) => (
                         <li key={"item-" + index}>
-                            {item.total} {item._id.unit} - {item._id.ingredient}
+                            {item.total.toFixed(2)} {item._id.unit} - {item._id.ingredient}
                         </li>
                     ))}
                 </ul>
@@ -55,7 +70,10 @@ function ShoppingList() {
                 <ul className="list-disc list-inside my-2">
                     {recipeList.recipe?.map((recipe, index) => (
                         <p key={"recipe-" + index}>
-                            <a href={"/recipe/" + recipe._id.$oid}>{recipe.title}</a>
+                            <a href={"/recipe/" + recipe._id.$oid}>{recipe.title}</a> 
+                            <span onClick={() => { removeRecipeFromList(recipe._id.$oid) }} className="bg-red-500 border border-red-700 py-1 px-2 ml-2 text-white text-xs hover:bg-red-700 cursor-pointer">
+                                remove
+                            </span>
                         </p>
                     ))}
                 </ul>

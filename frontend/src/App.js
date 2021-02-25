@@ -2,11 +2,11 @@ import { useState } from "react";
 import {
     Switch,
     Route,
+    Redirect,
     useHistory,
 } from "react-router-dom";
 import Recipes from "./pages/recipes";
 import Recipe from "./pages/recipe";
-import Home from "./pages/home";
 import Search from "./pages/search";
 import ShoppingList from "./pages/shopping-list";
 
@@ -61,9 +61,7 @@ function App() {
                 <Route path="/shopping-list/:user">
                     <ShoppingList />
                 </Route>
-                <Route path="/">
-                    <Home />
-                </Route>
+                <Redirect exact from="/" to="/recipes" />
             </Switch>
             <footer className="bg-gray-700 text-white text-xs">
                 <div className="container mx-auto p-4 flex flex-column flex-wrap">
