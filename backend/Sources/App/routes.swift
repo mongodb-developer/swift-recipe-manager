@@ -127,6 +127,38 @@ func routes(_ app: Application) throws {
         }
     }
 
+    app.delete("api", "recipe-list", ":name", ":recipe") { req -> EventLoopFuture<Response> in
+        guard let name = req.parameters.get("name") else {
+            throw Abort(.internalServerError, reason: "Request unexpectedly missing name parameter")
+        }
+
+        guard let recipe = req.parameters.get("recipe") else {
+            throw Abort(.internalServerError, reason: "Request unexpectedly missing recipe parameter")
+        }
+        let recipeId = try BSONObjectID(recipe)
+
+        let filterDoc: BSONDocument = [
+            "name": .string(name),
+            "recipes._id": .objectID(recipeId)
+        ]
+
+        let updateDoc: BSONDocument = [
+            "$unset": [
+                "recipes.$": ""
+            ]
+        ]
+
+        return req.userCollection.updateOne(
+            filter: filterDoc, 
+            update: updateDoc
+        ).unwrap(or: Abort(.internalServerError, reason: "Unexpectedly nil response from database"))
+        .flatMapThrowing { result in
+            guard result.modifiedCount == 1 else {
+                throw Abort(.notFound, reason: "No user was updated")
+            }
+            return Response(status: .ok)
+        }
+    }
 }
 
 struct GroceryListAddition: Codable {
