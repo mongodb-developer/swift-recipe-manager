@@ -7,6 +7,7 @@ import axios from "axios";
 function ShoppingList() {
 
     const [shoppingList, setShoppingList] = useState([]);
+    const [recipeList, setRecipeList] = useState({});
     const { user } = useParams();
 
     useEffect(() => {
@@ -17,6 +18,14 @@ function ShoppingList() {
         .then(response => response.data)
         .then(result => {
             setShoppingList(result);
+        });
+        axios({
+            "method": "GET",
+            "url": `http://localhost:8080/api/recipe-list/${user}`
+        })
+        .then(response => response.data)
+        .then(result => {
+            setRecipeList(result[0]);
         });
     }, [user]);
 
@@ -35,6 +44,19 @@ function ShoppingList() {
                         <li key={"item-" + index}>
                             {item.total} {item._id.unit} - {item._id.ingredient}
                         </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="mb-8">
+                <p><strong className="font-bold">Recipes</strong></p>
+                <p>
+                    Based on the ingredients in your shopping list, you can prepare the following recipes.
+                </p>
+                <ul className="list-disc list-inside my-2">
+                    {recipeList.recipe?.map((recipe, index) => (
+                        <p key={"recipe-" + index}>
+                            <a href={"/recipe/" + recipe._id.$oid}>{recipe.title}</a>
+                        </p>
                     ))}
                 </ul>
             </div>
