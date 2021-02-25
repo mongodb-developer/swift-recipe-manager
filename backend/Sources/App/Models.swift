@@ -38,7 +38,7 @@ enum Unit: String, Content {
     case teaspoons
     case tablespoons
     case unit
-    case toTaste
+    case toTaste = "to taste"
 }
 
 struct Instruction: Content {
