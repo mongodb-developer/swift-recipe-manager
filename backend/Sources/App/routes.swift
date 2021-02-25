@@ -97,7 +97,38 @@ func routes(_ app: Application) throws {
             cursor.toArray()
         }
     }
+
+    app.get("api", "recipe-list", ":name") { req -> EventLoopFuture<[BSONDocument]> in
+        guard let name = req.parameters.get("name") else {
+            throw Abort(.internalServerError, reason: "Request unexpectedly missing name parameter")
+        }
+
+        let pipeline: [BSONDocument] = [
+            ["$match": ["name": .string(name)]],
+            [
+                "$lookup": [
+                    "from": "recipes",
+                    "localField": "recipes._id",
+                    "foreignField": "_id",
+                    "as": "recipe"
+                ]
+            ],
+            [
+                "$project": [
+                    "_id": 1,
+                    "recipe._id": 1,
+                    "recipe.title": 1
+                ]
+            ]
+        ]
+
+        return req.userCollection.aggregate(pipeline).flatMap { cursor in
+            cursor.toArray()
+        }
+    }
+
 }
+
 struct GroceryListAddition: Codable {
     let recipeId: BSONObjectID
     let userName: String

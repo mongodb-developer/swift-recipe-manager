@@ -26,3 +26,26 @@ db.users.aggregate([
         }
     }
 ]);
+
+db.users.aggregate([
+    {
+        "$match": {
+            "name": "buildfest@mongodb.com"
+        }
+    },
+    {
+        "$lookup": {
+            "from": "recipes",
+            "localField": "recipes._id",
+            "foreignField": "_id",
+            "as": "recipe"
+        }
+    },
+    {
+        "$project": {
+            "_id": 1,
+            "recipe._id": 1,
+            "recipe.title": 1
+        }
+    }
+]);
