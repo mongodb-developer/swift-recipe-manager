@@ -28,7 +28,7 @@ function App() {
             <header className="fixed bg-mongodb-forest border-b-4 border-mongodb-fern w-full z-50 text-white">
                 <nav className="container mx-auto flex items-center justify-between flex-wrap p-4">
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
-                        <span className="font-bold text-xl uppercase"><a className="hover:no-underline" href="/" title="Mongo Cooks">Mongo Cooks</a></span>
+                        <span className="font-bold text-xl uppercase"><a className="hover:no-underline" href="/" title="SomeRecipes">SomeRecipes</a></span>
                     </div>
                     <div className="block sm:hidden">
                         <button onClick={() => setIsNavbarOpen(!isNavbarOpen)} aria-label="Navigation Menu" className="flex items-center py-2 rounded text-white">
