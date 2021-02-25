@@ -8,6 +8,7 @@ function ShoppingList() {
 
     const [shoppingList, setShoppingList] = useState([]);
     const [recipeList, setRecipeList] = useState({});
+    const [doReloadData, setDoReloadData] = useState(false);
     const { user } = useParams();
 
     useEffect(() => {
@@ -29,16 +30,17 @@ function ShoppingList() {
                 setRecipeList(result[0]);
             }
         });
-    }, [user]);
+        setDoReloadData(false);
+    }, [user, doReloadData]);
 
-    function removeRecipeFromList(recipeId) {
+    function removeRecipeFromList(recipeId, index) {
         axios({
             "method": "DELETE",
             "url": `http://localhost:8080/api/recipe-list/${user}/${recipeId}`
         })
         .then(response => response.data)
         .then(result => {
-            console.log(result);
+            setDoReloadData(true);
         }, error => {
             console.error(error);
         });
@@ -71,7 +73,7 @@ function ShoppingList() {
                     {recipeList.recipe?.map((recipe, index) => (
                         <p key={"recipe-" + index}>
                             <a href={"/recipe/" + recipe._id.$oid}>{recipe.title}</a> 
-                            <span onClick={() => { removeRecipeFromList(recipe._id.$oid) }} className="bg-red-500 border border-red-700 py-1 px-2 ml-2 text-white text-xs hover:bg-red-700 cursor-pointer">
+                            <span onClick={() => { removeRecipeFromList(recipe._id.$oid, index) }} className="bg-red-500 border border-red-700 py-1 px-2 ml-2 text-white text-xs hover:bg-red-700 cursor-pointer">
                                 remove
                             </span>
                         </p>
