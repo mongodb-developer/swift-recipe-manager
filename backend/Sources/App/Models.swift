@@ -32,7 +32,7 @@ struct Ingredient: Content {
 }
 
 enum Unit: String, Content {
-    case cup
+    case cups
     case ounces
     case grams
     case teaspoons

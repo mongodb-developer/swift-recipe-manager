@@ -1,6 +1,6 @@
 use("recipes");
 
-db.recipes.drop();
+//db.recipes.drop();
 
 db.recipes.insertMany([
     {
@@ -13,19 +13,19 @@ db.recipes.insertMany([
             {
                 "ingredient": "Honey Maid Graham Cracker Crumbs",
                 "quantity": 1.75,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": ""
             },
             {
                 "ingredient": "Butter",
                 "quantity": 0.6666,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": "Melted"
             },
             {
                 "ingredient": "Sugar",
                 "quantity": 1.25,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": "Divided"
             },
             {
@@ -37,7 +37,7 @@ db.recipes.insertMany([
             {
                 "ingredient": "Sour Cream",
                 "quantity": 1,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": ""
             },
             {
@@ -96,19 +96,19 @@ db.recipes.insertMany([
             {
                 "ingredient": "Granulated Sugar",
                 "quantity": 1,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": ""
             },
             {
                 "ingredient": "Brown Sugar",
                 "quantity": 1,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": ""
             },
             {
                 "ingredient": "Butter",
                 "quantity": 1,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": "Softened"
             },
             {
@@ -126,7 +126,7 @@ db.recipes.insertMany([
             {
                 "ingredient": "Semi-Sweet Chocolate Chips",
                 "quantity": 2,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": ""
             },
             {
@@ -144,7 +144,7 @@ db.recipes.insertMany([
             {
                 "ingredient": "All Purpose Flour",
                 "quantity": 3,
-                "unit": "cup",
+                "unit": "cups",
                 "notes": ""
             }
         ],
@@ -176,5 +176,223 @@ db.recipes.insertMany([
         }
     }
 ]);
+
+db.recipes.insertOne({
+	"title" : "Mac and cheese",
+	"photo" : "https://...",
+	"description" : "A simple baked mac and cheese recipe",
+	"servings" : 6,
+	"calories" : 500,
+	"ingredients" : [
+		{
+			"ingredient" : "Elbow macaroni",
+			"quantity" : 16,
+			"unit" : "ounces",
+			"notes" : "or a similar pasta shape"
+		},
+		{
+			"ingredient" : "Butter",
+			"quantity" : 4,
+			"unit" : "tablespoons",
+			"notes" : "cut up into small chunks"
+		},
+		{
+			"ingredient" : "Milk",
+			"quantity" : 2,
+			"unit" : "cups",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Salt",
+			"quantity" : 1,
+			"unit" : "to taste",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Pepper",
+			"quantity" : 1,
+			"unit" : "to taste",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Onion salt",
+			"quantity" : 1,
+			"unit" : "to taste",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Extra sharp cheddar cheese",
+			"quantity" : 16,
+			"unit" : "ounces",
+			"notes" : "grated"
+		},
+		{
+			"ingredient" : "Flour",
+			"quantity" : 4,
+			"unit" : "tablespoons",
+			"notes" : ""
+		}
+	],
+	"instructions" : [
+		{
+			"description" : "Heat oven to 350 degrees F.",
+			"photo" : "https://..."
+		},
+		{
+			"description" : "Cook the macaroni to al dente according to instructions on the box.",
+			"photo" : "https://..."
+		},
+		{
+			"description" : "Grease a 2.5 quart baking dish with a bit of the butter.",
+			"photo" : "https://..."
+		},
+		{
+			"description" : "Put in 4-5 layers in the following order, ending with seasoning and butter: macaroni, cheese, seasonings, chunks of butter, sprinkle of flour.",
+			"photo" : "https://..."
+		},
+		{
+			"description" : "Pour in milk, filling dish to about 1/2 inch from the top.",
+			"photo" : "https://..."
+		},
+        {
+			"description" : "Bake for about an hour.",
+			"photo" : "https://..."
+		}
+	],
+	"rating" : {
+		"average" : 5,
+		"total_reviews" : 1000000
+	}
+})
+
+db.recipes.insertOne({
+	"title" : "Instant pot spicy black bean soup",
+	"photo" : "https://...",
+	"description" : "You don't have to soak beans when using an electric pressure cooker. Adjust the spices to your liking in this healthier, easy-to-make black bean soup that freezes well.",
+	"servings" : 8,
+	"calories" : 280,
+	"ingredients" : [
+		{
+			"ingredient" : "Olive oil",
+			"quantity" : 2,
+			"unit" : "tablespoons",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Medium white onion",
+			"quantity" : 1,
+			"unit" : "unit",
+			"notes" : "chopped"
+		},
+		{
+			"ingredient" : "Yellow bell pepper",
+			"quantity" : 1,
+			"unit" : "unit",
+			"notes" : "diced"
+		},
+		{
+			"ingredient" : "Garlic cloves",
+			"quantity" : 5,
+			"unit" : "unit",
+			"notes" : "crushed"
+		},
+		{
+			"ingredient" : "Chili powder",
+			"quantity" : 4,
+			"unit" : "teaspoons",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Ground cumin",
+			"quantity" : 1.5,
+			"unit" : "teaspoons",
+			"notes" : ""
+		},
+        {
+			"ingredient" : "Dried oregano",
+			"quantity" : 1.5,
+			"unit" : "teaspoons",
+			"notes" : ""
+		},
+		{
+			"ingredient" : "Salt",
+			"quantity" : 0.5,
+			"unit" : "teaspoons",
+			"notes" : "grated"
+		},
+		{
+			"ingredient" : "Freshly ground black pepper",
+			"quantity" : 0.5,
+			"unit" : "teaspoons",
+			"notes" : ""
+		},
+        {
+			"ingredient" : "Chipotle pepper powder",
+			"quantity" : 0.25,
+			"unit" : "teaspoons",
+			"notes" : ""
+		},
+        {
+			"ingredient" : "Vegetable broth",
+			"quantity" : 6,
+			"unit" : "cups",
+			"notes" : ""
+		},
+        {
+			"ingredient" : "Dry black beans",
+			"quantity" : 16,
+			"unit" : "ounces",
+			"notes" : ""
+		},
+    {
+			"ingredient" : "Canned chopped Hatch chile peppers",
+			"quantity" : 4,
+			"unit" : "ounces",
+			"notes" : "undrained"
+		},
+        {
+			"ingredient" : "Garlic salt",
+			"quantity" : 1,
+			"unit" : "to taste",
+			"notes" : ""
+		},
+        {
+			"ingredient" : "Pico de gallo",
+			"quantity" : 1,
+			"unit" : "cups",
+			"notes" : "garnish"
+		},
+        {
+			"ingredient" : "Red bell pepper",
+			"quantity" : 1,
+			"unit" : "unit",
+			"notes" : "garnish"
+		},
+        {
+			"ingredient" : "Lime",
+			"quantity" : 1,
+			"unit" : "unit",
+			"notes" : "for garnish, cut into wedges"
+		}
+	],
+	"instructions" : [
+		{
+			"description" : "Turn on a multi-functional pressure cooker (such as Instant Pot®) and select Saute function. Add oil and heat until shimmering. Add onion and yellow pepper; cook and stir until translucent and soft, about 5 minutes.",
+			"photo" : "https://..."
+		},
+		{
+			"description" : "Add garlic, chili powder, cumin, oregano, salt, pepper, and chipotle powder. Stir until fragrant, about 1 minute. Add broth, beans, and chile peppers. Close and lock the lid. Select high pressure according to manufacturer's instructions; set timer for 40 minutes. Allow 10 to 15 minutes for pressure to build.",
+			"photo" : "https://..."
+		},
+		{
+			"description" : "Release pressure using the natural-release method according to manufacturer's instructions, about 25 minutes. Unlock and remove the lid. Use a stick blender to blend beans until thick and creamy. Season with garlic salt. Serve with pico de gallo, red bell pepper slices, and lime wedges.",
+			"photo" : "https://..."
+		}
+	],
+	"rating" : {
+		"average" : 5,
+		"total_reviews" : 23
+	}
+})
 
 db.recipes.find({});
